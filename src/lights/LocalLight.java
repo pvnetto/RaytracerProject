@@ -1,5 +1,7 @@
 package lights;
 
+import java.io.Serializable;
+
 import primitives.IHittable.HitRecord;
 import renderer.Vector3;
 

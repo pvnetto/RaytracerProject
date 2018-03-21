@@ -1,5 +1,7 @@
 package lights;
 
+import java.io.Serializable;
+
 import primitives.IHittable.HitRecord;
 import renderer.Vector3;
 
@@ -24,10 +26,14 @@ public class Spotlight extends LocalLight {
 	
 	@Override
 	public double getDiffuse(HitRecord hitRecord) {
-		if(isInsideCone(hitRecord)) {
+		/*if(isInsideCone(hitRecord)) {
 			return super.getDiffuse(hitRecord);
 		}
-		return 0;
+		return 0;*/
+		double m = 64;
+        Vector3 v = hitRecord.intersectionPoint.sub(position).normalized();
+        double VdotD = Vector3.Dot(v, lookAt);
+		return Math.pow(	Math.max(VdotD, 0), m	);
 	}
 
 }

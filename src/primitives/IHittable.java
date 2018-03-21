@@ -5,11 +5,13 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Vector;
 
+import lights.Light;
+import primitives.IHittable.HitRecord;
 import renderer.Ray;
 import renderer.Vector3;
 
 public interface IHittable {
-	public class HitRecord {
+	public class HitRecord implements Serializable {
 		public double t;
 	    public Vector3 intersectionPoint;
 	    public Vector3 normal;
@@ -38,6 +40,8 @@ public interface IHittable {
 	}
 	
 	public HitRecord Hit(Ray ray, double minT, double maxT);
+	
+	public Vector3 getColor(Ray ray, HitRecord hitRecord, Vector<Light> lights, Vector<IHittable> objects);
 	
 	public static HitRecord getFirstHit(Vector<IHittable> objects, Ray ray, double minT, double maxT) {
         boolean hasHit = false;

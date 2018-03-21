@@ -1,10 +1,8 @@
 package renderer;
 
 import java.io.Serializable;
-import java.util.Random;
-import java.util.Vector;
 
-public class Vector3 implements Serializable{
+public class Vector3 implements Serializable {
 	/**
 	 * 
 	 */

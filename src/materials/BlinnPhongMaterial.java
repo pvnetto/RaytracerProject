@@ -1,5 +1,6 @@
 package materials;
 
+import java.io.Serializable;
 import java.util.Vector;
 
 import lights.DirectionalLight;
@@ -9,7 +10,7 @@ import primitives.IHittable.HitRecord;
 import renderer.Ray;
 import renderer.Vector3;
 
-public class BlinnPhongMaterial implements Material{
+public class BlinnPhongMaterial implements Material, Serializable{
 	private Vector3 ambientColor;
 	private Vector3 diffuseColor;
 	private Vector3 specular;
@@ -54,7 +55,7 @@ public class BlinnPhongMaterial implements Material{
 
             if(diffuseContribution > 0.0f){
                 Vector3 halfDir = lightDir.add(viewDir).normalized();
-                double specAngle = Math.max(Vector3.Dot(halfDir, hitRecord.normal), 0);
+                double specAngle = light.getDiffuse(hitRecord);//Math.max(Vector3.Dot(halfDir, hitRecord.normal), 0);
                 specularContribution = Math.pow(specAngle, shininess);
                 /*Adding specular component to the final color.*/
                 finalColor = finalColor.add( specular.scale(specularContribution).mult(intensity) );

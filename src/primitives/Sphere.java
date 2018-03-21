@@ -1,10 +1,14 @@
 package primitives;
 
+import java.io.Serializable;
+import java.util.Vector;
+
+import lights.Light;
 import materials.Material;
 import renderer.Ray;
 import renderer.Vector3;
 
-public class Sphere implements IHittable {
+public class Sphere implements IHittable, Serializable {
 	
 	private Vector3 center;
 	private double radius;
@@ -17,8 +21,9 @@ public class Sphere implements IHittable {
 		this.material = material;
 	}
 	
-	public Material getMaterial() {
-		return material;
+	@Override
+	public Vector3 getColor(Ray ray, HitRecord hitRecord, Vector<Light> lights, Vector<IHittable> objects) {
+		return material.getColor(this, ray, hitRecord, lights, objects);
 	}
 
 	@Override

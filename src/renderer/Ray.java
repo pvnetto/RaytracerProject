@@ -1,6 +1,8 @@
 package renderer;
 
-public class Ray {
+import java.io.Serializable;
+
+public class Ray implements Serializable {
 	private Vector3 origin;
 	private Vector3 direction;
 	

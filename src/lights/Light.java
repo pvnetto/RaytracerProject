@@ -1,9 +1,11 @@
 package lights;
 
+import java.io.Serializable;
+
 import primitives.IHittable.HitRecord;
 import renderer.Vector3;
 
-public abstract class Light {
+public abstract class Light implements Serializable{
 	protected Vector3 intensity;
 	protected Vector3 direction;
 	

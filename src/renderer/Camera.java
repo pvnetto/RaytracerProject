@@ -2,7 +2,7 @@ package renderer;
 
 import java.io.Serializable;
 
-public class Camera implements Serializable{
+public class Camera implements Serializable {
 	/**
 	 * 
 	 */
