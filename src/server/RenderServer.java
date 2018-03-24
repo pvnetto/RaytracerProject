@@ -1,5 +1,8 @@
 package server;
 
+import java.net.MalformedURLException;
+import java.rmi.AlreadyBoundException;
+import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -30,8 +33,8 @@ public class RenderServer extends UnicastRemoteObject implements IRender {
 	public static void main(String args[]) {		
 		try {
 			RenderServer renderServer = new RenderServer();
-			Registry registry = LocateRegistry.createRegistry(2000);
-			registry.rebind("//177.89.187.106/Server", renderServer);
+			Registry registry = LocateRegistry.createRegistry(4500);
+			registry.rebind("//179.240.132.62:4500/Server", renderServer);
 			System.out.println("> Render server started!");
 		} catch (RemoteException ex) {
 			System.out.println("> Failed to start the server...");

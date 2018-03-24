@@ -5,6 +5,8 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -51,11 +53,10 @@ public class RenderClient extends JFrame {
 		SetupJFrame();
 	}
 	
-	private void ConnectToServer() {
+	private void ConnectToServer() {		
 		try {
-			Registry registry = LocateRegistry.getRegistry(2000);
-			renderServer = (IRender) registry.lookup("//177.89.187.106/Server");
-			
+			Registry registry = LocateRegistry.getRegistry(4500);
+			renderServer = (IRender) registry.lookup("//179.240.132.62:4500/Server");
 		} catch (RemoteException ex) {
 			System.out.println("> Couldn't connect to the server. RemoteException thrown.");
 			System.out.println("> Error: " + ex.getMessage());
