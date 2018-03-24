@@ -31,7 +31,7 @@ public class RenderServer extends UnicastRemoteObject implements IRender {
 		try {
 			RenderServer renderServer = new RenderServer();
 			Registry registry = LocateRegistry.createRegistry(2000);
-			registry.rebind("Server", renderServer);
+			registry.rebind("//177.89.187.106/Server", renderServer);
 			System.out.println("> Render server started!");
 		} catch (RemoteException ex) {
 			System.out.println("> Failed to start the server...");
